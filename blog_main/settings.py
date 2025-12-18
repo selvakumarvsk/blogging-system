@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-h48pu(1h32to)%83lby!bdjimmf)%q_c_*p3(p)bmhh75&woe_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "blogging-system-1-gdfv.onrender.com",
+    '*',
+    ]
 
 
 # Application definition
@@ -134,3 +137,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://blogging-system-1-gdfv.onrender.com",
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
