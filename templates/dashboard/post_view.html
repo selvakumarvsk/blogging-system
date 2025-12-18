@@ -6,6 +6,7 @@
 {% include 'dashboard/vertical_nav.html' %}
 <!-- body -->
 <div class="col-10">
+{% if perms.auth.view_user %}
 <dir class="d-flex justify-content-end">
 <button type="submit" class="btn btn-sm btn-primary "><a href="{% url 'post_add' %}" class="text-white">add</a></button>
 </dir>
@@ -33,6 +34,30 @@
     {% endfor %}
   </tbody>
 </table>
+{% else %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Status</th>
+      <th scope="col">Featured</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in post %}
+    <tr>
+      <th scope="row">{{item.id}}</th>
+      <th scope="row">{{item.title}}</th>
+      <td>{{item.category}}</td>
+      <td>{{item.status}}</td>
+      <td>{{item.is_featured}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
 </div>
 </div>
 {% endblock %}

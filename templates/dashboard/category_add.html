@@ -6,11 +6,17 @@
 {% include 'dashboard/vertical_nav.html' %}
 <!-- body -->
 <div class="col-10 mb-3">
+
+{% if perms.auth.view_user %}
 <form action="{% url 'category_add' %}" method="POST" >
 {% csrf_token %}
 <h3>New category</h3>
 {{forms | crispy}}
 <button type="submit" class="btn btn-sm btn-secondary">submit</button>
 </form>
+{% else %}
+<h3 class="text-danger" >You are not permitted to access this page</h3>
+{% endif %}
+
 </div>
 {% endblock %}
