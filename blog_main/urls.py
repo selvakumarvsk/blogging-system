@@ -22,7 +22,7 @@ from .views import register,login_page,logout_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
     path('register/',register, name='register'),
     path('login/',login_page, name='login'),
     path('logout/',logout_page, name='logout'),
