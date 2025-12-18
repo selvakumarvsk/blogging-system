@@ -5,6 +5,8 @@
 <form action="{% url 'login' %}" method="POST" style="width: 600px; margin: auto;">
     {% csrf_token %}
     {{ forms|crispy }}
-    <button type="submit" class="btn btn-secondary">Submit</button>
+    <span class="text-danger">Until the requirements satisify it doesn't redirect to next page.</span>
+    <span>If all the required fields are valid then it is navigated to home page.</span>
+    <button type="submit" class="btn btn-secondary container-fluid mt-2 mb-5">Submit</button>
 </form>
 {% endblock %}
