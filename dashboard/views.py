@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from jupyterlab_server import slugify
+from django.utils.text import slugify
 from blog.models import Blog,Category
 from .forms import CategoryForm,BlogForm,UserForm,EditUserForm
 from django.contrib.auth.models import User
