@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Blogs</title>
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+    <!--css linking-->
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+  </head>
+<body>
+    <div class="container">
+      <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            <a class="blog-header-logo text-dark" href="/blog/home/">Django Blog</a>
+          </div>
+          <div class="col-4">
+            <form class="d-flex" role="search" action="{% url 'search' %}" method="GET">
+            {% csrf_token %}
+              <input class="form-control me-2" type="search" name="keyword" value="{{ keyword }}" placeholder="Search" aria-label="Search"/>
+              <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            {% if not user.is_authenticated %}
+            <a class="btn btn-sm btn-dark" href="{% url 'login' %}">Login</a> &nbsp;
+            <a class="btn btn-sm btn-secondary" href="{% url 'register' %}">Register</a>
+            {% else %}
+            <span>Welcome-{{ user }}</span>
+            &emsp;
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            &emsp;
+            <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          {% for item in categories %}
+          <a class="p-2 text-muted" href="{% url 'category' item.id %}">{{item.category}}</a>
+          {% endfor %}
+        </nav>
+      </div>
+
+        <!-- content -->
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+<footer class="blog-footer">
+  <p>Django blog built by <a href="#">Selva Kumar</a></p>
+</footer>
+</body>
+</html>

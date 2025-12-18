@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row flex-nowrap">
+<!-- vertical navbar -->
+{% include 'dashboard/vertical_nav.html' %}
+<!-- body -->
+<div class="col-10 mb-3">
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" >Categories and Posts</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="row">
+    <div class="col-6 card p-3">
+    <h5 class="card-title">Categories</h5>
+    <p class="card-text">Number of categories {{category_count}}.</p>
+    </div>
+    <div class="col-6 card p-3">
+    <h5 class="card-title">Posts</h5>
+    <p class="card-text">Number of published and draft posts {{blog_count}}</p>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<div class="col-2">
+<ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'category_view' %}">Categories</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'post_view' %}">Posts</a>
+  </li>
+  {% if perms.auth.view_user %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'user_view' %}">Users</a>
+  </li>
+  {% endif %}
+</ul>
+</div>

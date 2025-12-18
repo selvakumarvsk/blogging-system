@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row flex-nowrap">
+<!-- vertical navbar -->
+{% include 'dashboard/vertical_nav.html' %}
+<!-- body -->
+<div class="col-10">
+{% if perms.auth.view_user %}
+<dir class="d-flex justify-content-end">
+<button type="submit" class="btn btn-sm btn-primary "><a href="{% url 'user_add' %}" class="text-white">add</a></button>
+</dir>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Users</th>
+      <th scope="col">Active</th>
+      <th scope="col">Staff</th>
+      <th scope="col">Superuser</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in users %}
+    <tr>
+      <th scope="row">{{item.id}}</th>
+      <th scope="row">{{item.username}}</th>
+      <td>{{item.is_active}}</td>
+      <td>{{item.is_staff}}</td>
+      <td>{{item.is_superuser}}</td>
+      <td><a href="{% url 'user_edit' item.id %}">Edit</a> | <a href="{% url 'user_delete' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h3>You are not permitted to access this page</h3>
+{% endif %}
+</div>
+</div>
+{% endblock %}

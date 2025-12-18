@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row flex-nowrap">
+<!-- vertical navbar -->
+{% include 'dashboard/vertical_nav.html' %}
+<!-- body -->
+<div class="col-10">
+<dir class="d-flex justify-content-end">
+<button type="submit" class="btn btn-sm btn-primary "><a href="{% url 'post_add' %}" class="text-white">add</a></button>
+</dir>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Status</th>
+      <th scope="col">Featured</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in post %}
+    <tr>
+      <th scope="row">{{item.id}}</th>
+      <th scope="row">{{item.title}}</th>
+      <td>{{item.category}}</td>
+      <td>{{item.status}}</td>
+      <td>{{item.is_featured}}</td>
+      <td><a href="{% url 'post_edit' item.id %}">Edit</a> | <a href="{% url 'post_delete' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}

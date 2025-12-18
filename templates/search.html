@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="blog-post-title" style="color: gray;">Results</h2>
+ <div class="row mb-2">
+    {% for item in blogs %}
+    <div class="col-md-6">
+      <div class="card border-0" >
+        <div class="card-body">
+          <h3><a href="{% url 'single_blog' item.slug %}" style="color: black;">{{item.title}}</a></h3>
+          <small class="mb-1 text-muted">{{item.created_at | timesince }} | {{item.author}}</small>
+          <p class="card-text">{{item.description}}</p>
+          <p class="card-text">{{item.blog_body}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
