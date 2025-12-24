@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="row flex-nowrap">
+<div class="row flex">
 <!-- vertical navbar -->
 {% include 'dashboard/vertical_nav.html' %}
 <!-- body -->
-<div class="col-10">
+<div class="col-12 col-md-10">
 {% if perms.auth.view_user %}
 <dir class="d-flex justify-content-end">
 <button type="submit" class="btn btn-sm btn-primary "><a href="{% url 'post_add' %}" class="text-white">add</a></button>

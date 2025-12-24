@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="row flex-nowrap">
+<div class="row flex">
 <!-- vertical navbar -->
 {% include 'dashboard/vertical_nav.html' %}
 <!-- body -->
-<div class="col-10 mb-3">
+<div class="col-12 mb-3 col-md-10">
 {% if perms.auth.view_user %}
 <form action="{% url 'user_edit' user.id %}" method="POST" >
 {% csrf_token %}

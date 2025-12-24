@@ -1,0 +1,7 @@
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-start justify-content-md-between">
+          {% for item in categories %}
+          <a class="p-2 text-muted" href="{% url 'category' item.id %}">{{item.category}}</a>
+          {% endfor %}
+        </nav>
+      </div>
